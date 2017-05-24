@@ -29,7 +29,8 @@ while [[  $COUNTER -lt 15000 ]]; do
 	curHash=`md5sum $results_folder/${COUNTER}.html | tr " " "\n" | head -1`
 
 	# Is this page different than the previous result?
-	# A different web response generally means success, but this is brittle. We could do much better
+	# A different web response generally means success, but
+	# todo: this is brittle. We could do better
 	if [[ -n $prevHash ]] && [[ $prevHash != $curHash ]]; then
 		# Success!
 		echo "Successfully checked in!"
@@ -43,4 +44,6 @@ while [[  $COUNTER -lt 15000 ]]; do
 done
 
 # todo: does this work for multiple passengers on the same itinerary?
-# todo: does this automatically trigger the following "next" button?
+
+# this doesn't automatically trigger the following "next" button on the resulting page.
+# todo: does southwest generate the position without that following "next" ?
